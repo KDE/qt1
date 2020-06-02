@@ -43,6 +43,7 @@ flex_target(MyScanner moc.l ${CMAKE_CURRENT_BINARY_DIR}/lexer.cpp)
 add_flex_byacc_dependency(MyScanner MyParser)
 
 add_executable(moc-qt1 ${MOC_SRCS} ${BYACC_MyParser_OUTPUTS})
+target_compile_definitions(moc-qt1 PRIVATE -DYYDEBUG=1)
 target_compile_options(moc-qt1 PRIVATE -fno-strength-reduce)
 target_include_directories(moc-qt1 PRIVATE ${PROJECT_SOURCE_DIR}/include)
 install(TARGETS moc-qt1 RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
