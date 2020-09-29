@@ -2785,6 +2785,8 @@ bool QETWidget::translateMouseEvent( const XEvent *event )
 	    case Button1: button = LeftButton;	break;
 	    case Button2: button = MidButton;	break;
 	    case Button3: button = RightButton; break;
+	    case Button4: button = ScrollUpButton; break;
+	    case Button5: button = ScrollDownButton; break;
 	}
 	state = translateButtonState( event->xbutton.state );
 	if ( event->type == ButtonPress ) {	// mouse button pressed
@@ -2794,7 +2796,8 @@ bool QETWidget::translateMouseEvent( const XEvent *event )
 		 (long)event->xbutton.time -(long)mouseButtonPressTime
                        < QApplication::doubleClickInterval() &&
 		 QABS(event->xbutton.x - mouseXPos) < 5 &&
-		 QABS(event->xbutton.y - mouseYPos) < 5 ) {
+		 QABS(event->xbutton.y - mouseYPos) < 5 &&
+                 mouseButtonPressed & MouseButtonMask ) { // Exclude scroll wheels
 		type = Event_MouseButtonDblClick;
 		mouseButtonPressTime -= 2000;	// no double-click next time
 	    } else {

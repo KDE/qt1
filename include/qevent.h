@@ -30,6 +30,7 @@
 #include "qstring.h"
 #endif // QT_H
 
+#define QT_SCROLL_SUPPORT
 
 #define Event_None		    0		// invalid event
 #define Event_Timer		    1		// timer event
@@ -105,7 +106,9 @@ enum ButtonState {				// mouse/keyboard state values
     ShiftButton	    = 0x08,
     ControlButton   = 0x10,
     AltButton	    = 0x20,
-    KeyButtonMask   = 0x38
+    KeyButtonMask   = 0x38,
+    ScrollUpButton  = 0x40,
+    ScrollDownButton= 0x80
 };
 
 class Q_EXPORT QMouseEvent : public QEvent	// mouse event
