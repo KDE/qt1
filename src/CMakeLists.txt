@@ -35,6 +35,8 @@ add_library(Qt1
     $<TARGET_OBJECTS:dialogs>
     $<TARGET_OBJECTS:widgets>
     $<TARGET_OBJECTS:tools>
+
+    $<TARGET_OBJECTS:qgl>
 )
 
 add_library(Qt::Qt1 ALIAS Qt1)
@@ -43,6 +45,9 @@ target_link_libraries(Qt1
     PRIVATE
         ${X11_LIBRARIES}
     )
+if(ENABLE_OPENGL)
+    target_link_libraries(Qt1 PRIVATE OpenGL::GL X11::Xmu)
+endif()
 
 set_target_properties(Qt1 PROPERTIES
     OUTPUT_NAME qt1
