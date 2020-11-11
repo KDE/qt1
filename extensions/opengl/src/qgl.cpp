@@ -30,6 +30,7 @@
 #define INT8  dummy_INT8
 #define INT32 dummy_INT32
 #include <GL/glx.h>
+#include <GL/glxext.h>
 #undef  INT8
 #undef  INT32
 #define	 GC GC_QQQ

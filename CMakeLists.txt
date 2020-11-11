@@ -55,7 +55,8 @@ if(ENABLE_THREAD_SUPPORT)
 endif()
 
 if(ENABLE_OPENGL)
-    find_package(OpenGL REQUIRED)
+    find_package(OpenGL COMPONENTS GL GLX)
+    add_subdirectory(extensions/opengl/src)
 endif()
 
 if(SYSTEM_ZLIB)
