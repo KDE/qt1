@@ -1120,12 +1120,13 @@ void QPopupMenu::paintCell( QPainter *p, int row, int col )
 	    int pixw = pixmap->width();
 	    int pixh = pixmap->height();
 	    if ( gs == MotifStyle ) {
+		QBrush bgBrush(g.background());
 		if ( act && !dis )			// active item frame
 		    qDrawShadePanel( p, 0, 0, rw, cellh, g, FALSE,
-				     motifItemFrame );
+				     motifItemFrame, &bgBrush );
 		else				// incognito frame
 		    qDrawPlainRect( p, 0, 0, rw, cellh, g.background(),
-				    motifItemFrame );
+				    motifItemFrame, &bgBrush );
 	    } else {
 		if ( act && !dis ) {
 		    if ( !mi->isChecked() )
@@ -1178,10 +1179,11 @@ void QPopupMenu::paintCell( QPainter *p, int row, int col )
 			     act ? QApplication::winStyleHighlightColor()
 			     : g.background() );
 	} else if ( gs == MotifStyle ) {
+	    QBrush bgBrush(g.background());
 	    if ( act && !dis )			// active item frame
-		qDrawShadePanel( p, 0, 0, rw, cellh, g, FALSE, pw );
+		qDrawShadePanel( p, 0, 0, rw, cellh, g, FALSE, pw, &bgBrush );
 	    else				// incognito frame
-		qDrawPlainRect( p, 0, 0, rw, cellh, g.background(), pw );
+		qDrawPlainRect( p, 0, 0, rw, cellh, g.background(), pw, &bgBrush );
 	}
 
 	if ( isCheckable() ) {	// just "checking"...
