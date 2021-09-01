@@ -1614,6 +1614,11 @@ void QMultiLineEdit::end( bool mark )
 
 void QMultiLineEdit::mousePressEvent( QMouseEvent *m )
 {
+    if ((m->button() == ScrollUpButton) || (m->button() == ScrollDownButton)) {
+        QTableView::mousePressEvent(m);
+        return;
+    }
+
     mlData->isHandlingEvent = TRUE;
     if ( m->button() ==  MidButton ) {
 	if ( hasMarkedText() ) {

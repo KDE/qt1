@@ -1219,3 +1219,19 @@ bool QScrollView::focusNextPrevChild( bool next )
     candidate->setFocus();
     return TRUE;
 }
+
+void QScrollView::mousePressEvent(QMouseEvent *e)
+{
+    if (!e) {
+        return;
+    }
+    if ( e->button() == ScrollUpButton ) {
+        d->vbar.subtractLine();
+        return;
+    }
+    if ( e->button() == ScrollDownButton ) {
+        d->vbar.addLine();
+        return;
+    }
+
+}

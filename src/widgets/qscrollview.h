@@ -110,6 +110,8 @@ protected:
 
     bool focusNextPrevChild( bool next );
 
+    void mousePressEvent(QMouseEvent *e);
+
 private:
     void moveContents(int x, int y);
 

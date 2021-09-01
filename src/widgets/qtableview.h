@@ -134,6 +134,8 @@ protected:
     void	updateScrollBars();
     void	updateTableSize();
 
+    void mousePressEvent(QMouseEvent *e);
+
 private:
     void	coverCornerSquare( bool );
     void	snapToGrid( bool horizontal, bool vertical );

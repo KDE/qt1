@@ -2340,3 +2340,18 @@ void QTableView::updateTableSize()
 		      verSteps |  verRange );
     showOrHideScrollBars();
 }
+
+void QTableView::mousePressEvent(QMouseEvent *e)
+{
+    if (!e) {
+        return;
+    }
+    if ( e->button() == ScrollUpButton ) {
+        setYOffset(yOffset() - cellHeight());
+        return;
+    }
+    if ( e->button() == ScrollDownButton ) {
+        setYOffset(yOffset() + cellHeight());
+        return;
+    }
+}

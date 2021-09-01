@@ -1313,6 +1313,11 @@ void QListBox::paintCell( QPainter *p, int row, int col )
 
 void QListBox::mousePressEvent( QMouseEvent *e )
 {
+    if ((e->button() == ScrollUpButton) || (e->button() == ScrollDownButton)) {
+        QTableView::mousePressEvent(e);
+        return;
+    }
+
     int itemClicked = findItem( e->pos().y() );
     if ( itemClicked != -1 ) {
 	ensureCurrentVisible( itemClicked );

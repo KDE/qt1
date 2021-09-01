@@ -481,6 +481,15 @@ static QCOORD sliderStartPos = 0;
 
 void QScrollBar::mousePressEvent( QMouseEvent *e )
 {
+    if ( e->button() == ScrollUpButton ) {
+        subtractLine();
+        return;
+    }
+    if ( e->button() == ScrollDownButton ) {
+        addLine();
+        return;
+    }
+
     if ( !(e->button() == LeftButton ||
 	   (style() == MotifStyle && e->button() == MidButton) ) )
 	return;

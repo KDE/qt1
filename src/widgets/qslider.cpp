@@ -648,6 +648,15 @@ void QSlider::paintEvent( QPaintEvent *e )
 
 void QSlider::mousePressEvent( QMouseEvent *e )
 {
+    if ( e->button() == ScrollUpButton ) {
+        addLine();
+        return;
+    }
+    if ( e->button() == ScrollDownButton ) {
+        subtractLine();
+        return;
+    }
+
     resetState();
     sliderStartVal = sliderVal;
     QRect r = sliderRect();

@@ -2338,6 +2338,11 @@ void QListView::mousePressEvent( QMouseEvent * e )
     if ( !e )
 	return;
 
+    if ((e->button() == ScrollUpButton) || (e->button() == ScrollDownButton)) {
+        QScrollView::mousePressEvent(e);
+        return;
+    }
+
     if ( e->button() == RightButton ) {
 	QListViewItem * i;
 	if ( viewport()->rect().contains( e->pos() ) )
